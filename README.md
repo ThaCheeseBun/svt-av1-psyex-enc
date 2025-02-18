@@ -18,7 +18,7 @@ The crate has two features:
 
 For example:
 ```toml
-svt-av1-enc = { version = "0.1.0", features = ["static"] }
+svt-av1-enc = { version = "0.1", features = ["static"] }
 ```
 
 Providing library files can be done in two ways:

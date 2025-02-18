@@ -1,6 +1,9 @@
 use std::env;
 
 fn main() {
+    if env::var("DOCS_RS").is_ok() {
+        return;
+    }
     let static_feature = env::var("CARGO_FEATURE_STATIC").is_ok();
     let dynamic_feature = env::var("CARGO_FEATURE_DYNAMIC").is_ok();
     if !static_feature && !dynamic_feature || static_feature && dynamic_feature {
