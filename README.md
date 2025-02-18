@@ -1,5 +1,7 @@
 Tiny Rust safe wrapper for SVT-AV1 
+
 [crates.io](https://crates.io/crates/svt-av1-enc)
+
 [docs](https://docs.rs/crate/svt-av1-enc/latest)
 
 # Warning
