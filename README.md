@@ -21,4 +21,4 @@ Providing library files can be done in two ways:
 1. Specify `SVT_AV1_LIB` env variable, which contains path to compiled library files (recommended way)
 2. If you not specify `SVT_AV1_LIB` variable, build script will use `pkg-config` (make sure it installed) to find installed in a system SVT-AV1 files
 
-I highly recommend compile SVT-AV1 from source and set `SVT_AV1_LIB` env variable to complied files. Many distros have outdated version of SVT-AV1 and it can cause problems using this crate. Building SVT-AV1 from source is relatively ease and doesn't require a lot of dependencies. Build guide can be found (here)[https://gitlab.com/AOMediaCodec/SVT-AV1/-/blob/master/Docs/Build-Guide.md]
+I highly recommend compile SVT-AV1 from source and set `SVT_AV1_LIB` env variable to complied files. Many distros have outdated version of SVT-AV1 and it can cause problems using this crate. Building SVT-AV1 from source is relatively ease and doesn't require a lot of dependencies. Build guide can be found [here](https://gitlab.com/AOMediaCodec/SVT-AV1/-/blob/master/Docs/Build-Guide.md)
