@@ -25,7 +25,6 @@ fn main() {
                 cfg.statik(true);
             }
             let res = cfg.probe("SvtAv1Enc").map_err(|_| "Couldn't find SvtAv1Enc library, install it with your distro package manager or build it yourself and provide path to it with SVT_AV1_LIB env variable").unwrap();
-            println!("cargo::warning={:?}", res);
             for p in res.link_files {
                 println!("cargo:rustc-link-search=native={}", p.display());
             }
