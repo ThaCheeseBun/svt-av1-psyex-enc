@@ -1,0 +1,47 @@
+[package]
+name = "svt-av1-enc"
+version = "0.1.0"
+edition = "2021"
+description = "Tiny Rust safe wrapper for SVT-AV1"
+license = "MIT OR Apache-2.0"
+authors = ["Anton Lisovskit <lisovskiy@mailo.com>"]
+repository = "https://github.com/Vaider7/svt-av1-enc"
+keywords = ["codec", "video", "multimedia"]
+categories = ["multimedia::video", "api-bindings"]
+readme = "README.md"
+
+[features]
+static = []
+dynamic = []
+
+[dependencies]
+bitflags = "2.6.0"
+
+[dev-dependencies]
+re_rav1d = "0.1.3"
+y4m = "0.8.0"
+
+[build-dependencies]
+pkg-config = "0.3.31"
+
+[workspace.lints.rust]
+rust_2018_idioms = { level = "forbid", priority = -1 }
+missing_debug_implementations = "deny"
+missing_docs = "deny"
+unsafe_code = "deny"
+unused_results = "deny"
+
+[workspace.lints.clippy]
+type-complexity = "allow"
+semicolon_if_nothing_returned = "deny"
+trivially-copy-pass-by-ref = "deny"
+default_trait_access = "deny"
+match-wildcard-for-single-variants = "deny"
+redundant-closure-for-method-calls = "deny"
+filter_map_next = "deny"
+manual_let_else = "deny"
+unused_async = "deny"
+from_over_into = "deny"
+needless_borrow = "deny"
+new_without_default = "deny"
+useless_conversion = "deny"
