@@ -1,4 +1,6 @@
 Tiny Rust safe wrapper for SVT-AV1 
+[crates.io](https://crates.io/crates/svt-av1-enc)
+[docs](https://docs.rs/crate/svt-av1-enc/latest)
 
 # Warning
 This crate must be used with SVT-AV1 2.3.0 version. SVT-AV1 library API is subject to change with new releases, so if you want to use it with different version, do it at your own risk!
