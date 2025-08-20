@@ -23,7 +23,7 @@ fn main() {
         // No user specified path, use pkg_config to find lib in system
         Err(_) => {
             let mut cfg = pkg_config::Config::new();
-            cfg.exactly_version("2.3.0");
+            cfg.exactly_version("3.0.2");
             if static_feature {
                 cfg.statik(true);
             }

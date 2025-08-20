@@ -1,6 +1,6 @@
 use re_rav1d::Decoder;
 use std::{fs::File, io::Read as _};
-use svt_av1_enc::*;
+use svt_av1_psyex_enc::*;
 
 fn get_y4m_input() -> Vec<u8> {
     let mut input = File::open(format!(
@@ -24,7 +24,8 @@ fn encode_decode_from_y4m() {
     let mut svt_config = SvtAv1EncoderConfig::new(width as u32, height as u32, Some(1));
     svt_config.config.frame_rate_numerator = framerate.num as u32;
     svt_config.config.frame_rate_denominator = framerate.den as u32;
-    svt_config.config.force_key_frames = 1;
+    svt_config.config.force_key_frames = true;
+    svt_config.config.encoder_bit_depth = 8;
 
     let svt_encoder = svt_config.into_encoder().expect("Encoder");
     let mut encoded_frames = 0;

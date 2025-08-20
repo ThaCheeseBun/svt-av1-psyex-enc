@@ -1,11 +1,11 @@
 [package]
-name = "svt-av1-enc"
-version = "0.1.2"
+name = "svt-av1-psyex-enc"
+version = "0.2.0"
 edition = "2021"
-description = "Tiny Rust safe wrapper for SVT-AV1"
+description = "Tiny Rust safe wrapper for SVT-AV1-PSYEX"
 license = "MIT OR Apache-2.0"
-authors = ["Anton Lisovskit <lisovskiy@mailo.com>"]
-repository = "https://github.com/Vaider7/svt-av1-enc"
+authors = ["Anton Lisovskit <lisovskiy@mailo.com>", "ThaCheeseBun <me@cheese.nu>"]
+repository = "https://github.com/ThaCheeseBun/svt-av1-psyex-enc"
 keywords = ["codec", "video", "multimedia"]
 categories = ["multimedia::video", "api-bindings"]
 readme = "README.md"
@@ -16,14 +16,14 @@ static = []
 dynamic = []
 
 [dependencies]
-bitflags = "2.6.0"
+bitflags = "2.9.2"
 
 [dev-dependencies]
 re_rav1d = "0.1.3"
 y4m = "0.8.0"
 
 [build-dependencies]
-pkg-config = "0.3.31"
+pkg-config = "0.3.32"
 
 [workspace.lints.rust]
 rust_2018_idioms = { level = "forbid", priority = -1 }

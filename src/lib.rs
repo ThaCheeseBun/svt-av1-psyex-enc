@@ -1,14 +1,14 @@
-//! Tiny safe abstraction for [SVT-AV1 encoder](https://gitlab.com/AOMediaCodec/SVT-AV1)
+//! Tiny safe abstraction for [SVT-AV1-PSYEX encoder](https://github.com/BlueSwordM/svt-av1-psyex)
 //!
 //! ## Warning ⚠️
-//! This crate must be used with SVT-AV1 2.3.0 version. SVT-AV1 library API is subject to change with new releases, so if you want to use it with different version, do it at your own risk!
+//! This crate must be used with SVT-AV1-PSYEX 3.0.2-A version. SVT-AV1-PSYEX library API is subject to change with new releases, so if you want to use it with different version, do it at your own risk!
 //!
 //! ## Building
 //! For building options and requirements please follow [README]()
 //!
 //! ## Example
 //! ```
-//! use svt_av1_enc::*;
+//! use svt_av1_psyex_enc::*;
 //!
 //! // First create config
 //! let mut cfg = SvtAv1EncoderConfig::new(1920, 1080, Some(5));
@@ -30,7 +30,6 @@ use std::{
     ffi::CString,
     mem::MaybeUninit,
     ops::Deref,
-    ptr::{self},
 };
 
 macro_rules! call_c_code {
@@ -224,7 +223,7 @@ pub struct SvtAv1EncoderConfig {
 }
 
 impl SvtAv1EncoderConfig {
-    /// Create new config with default settings and set width and height parameters. Lift of settings can be found [here](https://gitlab.com/AOMediaCodec/SVT-AV1/-/blob/master/Docs/Parameters.md#encoder-global-options)
+    /// Create new config with default settings and set width and height parameters. Lift of settings can be found [here](https://github.com/BlueSwordM/svt-av1-psyex/blob/master/Docs/Parameters.md#encoder-global-options)
     pub fn new(width: u32, height: u32, preset: Option<i8>) -> Self {
         assert!((64..=16384).contains(&width));
         assert!((64..=8704).contains(&height));
@@ -233,7 +232,7 @@ impl SvtAv1EncoderConfig {
 
         let mut cfg = unsafe {
             let res =
-                svt_av1_enc_init_handle(handle.as_mut_ptr(), ptr::null_mut(), config.as_mut_ptr());
+                svt_av1_enc_init_handle(handle.as_mut_ptr(), config.as_mut_ptr());
             assert!(res == ErrorType::ErrorNone, "Failed to init svt av1 handle");
 
             // SAFETY: we checked that result is ErrorNone
@@ -256,7 +255,7 @@ impl SvtAv1EncoderConfig {
     }
 
     /// Set parameter for config from string. Note that string parameter name differs from [`SvtAv1EncConfiguration`] fields
-    /// Incorrect parameter name or value will cause error. You can find all legitimate parameters names [here](https://gitlab.com/AOMediaCodec/SVT-AV1/-/blob/master/Source/Lib/Globals/enc_settings.c#L1832)
+    /// Incorrect parameter name or value will cause error. You can find all legitimate parameters names [here](https://github.com/BlueSwordM/svt-av1-psyex/blob/master/Source/Lib/Globals/enc_settings.c#L1832)
     pub fn set_parameter_from_str(
         &mut self,
         name: impl AsRef<str>,
@@ -290,7 +289,7 @@ mod tests {
     #[test]
     fn init() {
         let enc = SvtAv1EncoderConfig::new(1920, 1080, None);
-        assert!(enc.config.enc_mode == 10);
+        assert!(enc.config.enc_mode == 8);
         assert!(enc.config.source_width == 1920);
         assert!(enc.config.source_height == 1080);
 
